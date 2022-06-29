@@ -102,9 +102,9 @@ public class WaitingEnergy : State {
         float rotation = Mathf.Rad2Deg * Mathf.Atan2(Agent.EnemyData[0].Position.x - Agent.Data.Position.x, Agent.EnemyData[0].Position.z - Agent.Data.Position.z);
         Agent.Rotate(rotation);
         
-        if(Agent.Data.HasSightEnemy && Agent.EnemyData[0].Speed > 0) Agent.Fire();
+        if(Agent.Data.HasSightEnemy && Agent.EnemyData[0].HasFlag && Agent.EnemyData[0].Speed > 0) Agent.Fire();
 
-        if(Agent.Data.Energy > 75) ChangeState(States.StatesEnum.Decision.ToString());
+        if(Agent.Data.Energy > 90) ChangeState(States.StatesEnum.Decision.ToString());
     }
 }
 
@@ -120,7 +120,7 @@ public class Aiming : State {
         float rotation = Mathf.Rad2Deg * Mathf.Atan2(Agent.EnemyData[0].Position.x - Agent.Data.Position.x, Agent.EnemyData[0].Position.z - Agent.Data.Position.z);
         Agent.Rotate(rotation);
 
-        if(Agent.Data.HasSightEnemy && Agent.EnemyData[0].Speed > 0) Agent.Fire();
+        if(Agent.Data.HasSightEnemy && Agent.EnemyData[0].HasFlag && Agent.EnemyData[0].Speed > 0) Agent.Fire();
 
         if(Agent.EnemyData[0].HasFlag) ChangeState(States.StatesEnum.Decision.ToString());
     }
